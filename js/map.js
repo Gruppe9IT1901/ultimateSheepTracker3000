@@ -59,12 +59,12 @@ function initialize(sheep) {
     for (var i = 0; i < sheep.length; i++) {
         //Sauemarkører
         markers[i] = new google.maps.Marker({
-            position: new google.maps.LatLng(sheep[i].lat, sheep[i].lng),
+            position: new google.maps.LatLng(sheep[i].xpos, sheep[i].ypos),
             animation: google.maps.Animation.DROP,
             map: map,
             icon: img,
-            title: sheep[i].name,
-            id: sheep[i].id
+            title: sheep[i].navn,
+            id: sheep[i].ID
         });
 
         //Lyttere til markørene
@@ -132,7 +132,7 @@ function initRegSheep() {
 
 function placeMarker(location, theMap) {
     $("#lat").attr("value", location.ob);
-    $("#lng").attr("value", location.pb);
+    $("#lng").attr("value", location.nb);
     if (marker) {
         marker.setPosition(location);
     } else {

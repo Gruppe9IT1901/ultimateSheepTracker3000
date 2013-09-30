@@ -59,7 +59,7 @@
                <table class="table table-hover">
                <?php
                   foreach ($sheep->result() as $s) {
-                    echo "<tr class=\"sauefaen\"><td><a href=endre/". $s->id.">". $s->name . "</a></td></tr>";
+                    echo "<tr class=\"sheep\"><td><a href=endre/$s->ID>". $s->navn . "</a></td></tr>";
                   }
                 ?>
                 </table>

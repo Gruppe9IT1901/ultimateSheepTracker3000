@@ -41,20 +41,16 @@ class Sau extends CI_Controller {
     }
 
     public function saveSheep(){
-        $this->load->library('validation');
-        $this->form_validation->set_rules('sauenavn','sauenavn','required|min_length[2]');
-        $this->form_validation->set_rules('lat','Posisjon','required');
-        $this->form_validation->set_rules('lng','Posisjon','required');
-        if ($this->form_validation->run() != false) {
+
             $sheepname = $this->input->post("sauenavn");
             $lat = $this->input->post("lat");
             $lng = $this->input->post("lng");
-            $this->sheep_model->insert_sheep($sheepname,$lat,$lng);
+            $health = $this->input->post('health');
+            $birthyear = $this->input->post('birthYear');
+            $weight = $this->input->post('weight');
+            $this->sheep_model->insert_sheep($sheepname,$lng,$lat,$health,$birthyear,$weight);
             redirect('welcome');
-        }
-        else{
-            regSheep();
-        }
+
     }
 
     public function deleteSheep(){

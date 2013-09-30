@@ -28,9 +28,10 @@ class Admin extends CI_Controller
 
             if($res != false){
                 $_SESSION['username'] =$this->input->post('email');
-                $_SESSION['userid'] = $res->id;
+                $_SESSION['userid'] = $res->email;
                 redirect('welcome');
             }
+
         }
 
         $this->load->view('login_view');

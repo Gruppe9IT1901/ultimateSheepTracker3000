@@ -41,6 +41,23 @@
     <label for="sauenavn">Navn</label>
    <input type='text' class='form-control input-md' name='sauenavn' id='sauenavn' placeholder='' required>
   </div>
+
+  <div class="form-group">
+    <label for="sauenavn">Fødselsår</label>
+   <input type='text' class='form-control input-md' name='birthYear' id='birthYear' placeholder='' required>
+  </div>
+
+  <div class="form-group">
+    <label for="sauenavn">Vekt</label>
+   <input type='text' class='form-control input-md' name='weight' id='weight' placeholder='' required>
+  </div>
+
+  <div class="form-group">
+    <label for="sauenavn">Helse</label>
+   <input type='text' class='form-control input-md' name='health' id='health' placeholder='' required>
+  </div>
+
+
   <div class="form-group">
   <label for="lat">Plassering</label>
 <div id="warning"></div>
@@ -58,7 +75,7 @@
                <table class="table table-hover">
                <?php
                   foreach ($sheep->result() as $s) {
-                    echo "<tr class=\"sheep\"><td>". $s->name . "</td></tr>";
+                    echo "<tr class=\"sheep\"><td>". $s->navn . "</td></tr>";
                   }
                 ?>
                 </table>

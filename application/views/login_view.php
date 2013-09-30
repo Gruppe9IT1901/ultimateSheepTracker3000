@@ -7,7 +7,7 @@
 </head>
 <body>
 
-
+<?php echo sha1("password"); ?>
 <div id="login-wrap">
 <h1>Logg in!</h1>
 <br />

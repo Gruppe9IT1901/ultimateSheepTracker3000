@@ -1,0 +1,66 @@
+body{
+    background: #2C3E50;
+}
+
+#login-wrap{
+    width:250px;
+    margin-left:auto;
+    margin-right: auto;
+    margin-top:50px;
+    color:white;
+    background: #E74C3C;
+    padding: 20px;
+    padding-top:5px;
+}
+
+.flatBtn{
+    background: #E74C3C;
+    float: left;
+    width: 200px;
+    line-height: 0.4;
+    margin-bottom: 20px;
+    margin-top: -10px;
+    margin-left:16px;
+}
+
+#menu{
+    background: white;
+    height: 550px;
+    background: white;
+    /*background: #E74C3C*/
+}
+
+#hero{
+    background: #95a5a6;
+    padding: 20px;
+}
+
+.btn-default{
+    background: #2C3E50;
+    border: 0;
+    color: white;
+}
+
+#map-canvas{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height:550px;
+
+}
+
+#maxmap{
+}
+
+.navbar{
+    border-radius: 0;
+    box-shadow: 0;
+}
+
+#warning{
+
+}
+
+.cursor{
+	cursor: pointer;
+}

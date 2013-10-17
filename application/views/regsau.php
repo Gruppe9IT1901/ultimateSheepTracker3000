@@ -88,7 +88,7 @@
                <table class="table table-hover">
                <?php
                   foreach ($sheep->result() as $s) {
-                    echo "<tr class=\"sheep\"><td><td width=20px>$s->ID</td>". $s->navn . "</td></tr>";
+                    echo "<tr class=\"sheep\"><td><td width=20px>$s->ID</td><td>". $s->navn . "</td></tr>";
                   }
                 ?>
                 </table>

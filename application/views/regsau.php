@@ -95,10 +95,12 @@
         </div>
 
     </div>
+<?php if (isset($inDb)): ?>
 <?php if($inDb): ?>
   <script type="text/javascript">
       $("#warning").html("<div class='alert alert-danger'>Velg en annen ID!</div>");
   </script>
+<?php endif; ?>
 <?php endif; ?>
 <script type="text/javascript">
   initRegSheep();

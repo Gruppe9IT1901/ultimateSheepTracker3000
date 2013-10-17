@@ -35,8 +35,15 @@ class Sau extends CI_Controller {
             $health = $this->input->post('health');
             $birthyear = $this->input->post('birthYear');
             $weight = $this->input->post('weight');
-            $this->sheep_model->insert_sheep($sheepname,$lat,$lng,$health,$birthyear,$weight,$sheepid);
-            redirect('welcome');
+            if (count($this->sheep_model->get_sheep_by_id($sheepid)) > 0) {
+                $data["sheep"] = $this->sheep_model->get_users_sheep();
+                $data["inDb"] = true; // saueid finnes fra før
+                $this->load->view('regsau',$data);
+            }
+            else{
+                $this->sheep_model->insert_sheep($sheepname,$lat,$lng,$health,$birthyear,$weight,$sheepid);
+                redirect('welcome');
+            }
 
     }
 

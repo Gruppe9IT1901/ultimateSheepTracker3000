@@ -46,6 +46,10 @@
 
         <div class="col-md-9" id="hero">
               <form role="form" name="sheepreg" action="savesau" method="post">
+    <div class="form-group">
+    <label for="sauenavn">ID</label>
+   <input type='text' class='form-control input-md' name='saueid' id='saueid' placeholder='00000' required>
+  </div>
   <div class="form-group">
     <label for="sauenavn">Navn</label>
    <input type='text' class='form-control input-md' name='sauenavn' id='sauenavn' placeholder='' required>
@@ -91,6 +95,11 @@
         </div>
 
     </div>
+<?php if($inDb): ?>
+  <script type="text/javascript">
+      $("#warning").html("<div class='alert alert-danger'>Velg en annen ID!</div>");
+  </script>
+<?php endif; ?>
 <script type="text/javascript">
   initRegSheep();
 

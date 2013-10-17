@@ -58,12 +58,12 @@
                <table class="table table-hover">
                <?php
                   foreach ($sheep->result() as $s) {
-                    echo "<tr class=\"sheep\" id='$s->ID'><td><span class='cursor'>". $s->navn . "</span></td></tr>";
+                    echo "<tr class=\"sheep\" id='$s->ID'><td width=20px>$s->ID</td><td><span class='cursor'>". $s->navn . "</span></td></tr>";
                   }
                 ?>
                 </table>
                 <table id="sheepinfo" class="table table-hover">
-                
+
                 </table>
 
 <script type="text/javascript">initialize(<?php echo json_encode($sheep->result()); ?>)</script>
@@ -84,14 +84,14 @@
 				dataType:'json',
 				url: "http://m111b.studby.ntnu.no/index.php/ajax/getsheepinfo",
 				data: { id: this.id }
-				})	
+				})
 				.done(function( msg ) {
 					$("#sheepinfo").append('<tr><td>Født: '+msg.birthYear+'</td></tr>');
 					$("#sheepinfo").append('<tr><td>Vekt: '+msg.weight+' kg</td></tr>');
 					$("#sheepinfo").append('<tr><td>Helse: '+msg.health+'</td></tr>');
 					console.log(msg);
 					test = msg;
-			});	
+			});
             $("#menu").append("<a class='deletesheep' href=delete/" + this.id + ">Slett</a>");
 			}
 		}

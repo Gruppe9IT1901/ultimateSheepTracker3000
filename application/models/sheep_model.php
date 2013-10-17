@@ -11,17 +11,19 @@ class Sheep_model extends CI_Model
         return $q;
     }
 
-    public function insert_sheep($sheepname,$lat,$lng,$health,$birthyear,$weight){
-        $sql = "INSERT INTO sau (navn,ownerID,birthYear,weight,health,color) VALUES (?,?,?,?,?,?)";
-        $this->db->query($sql, array($sheepname, $_SESSION["userid"], $birthyear, $weight,$health,'1'));
-        $sqlpos = "INSERT INTO saupos (xpos,ypos,sauID,dato) VALUES (?,?,LAST_INSERT_ID(),NOW());";
-        $this->db->query($sqlpos,array($lat,$lng,));
-    }
-
     public function get_sheep_by_id($id){
         $q = $this->db->query("SELECT * FROM sau WHERE ID ='".$id."' LIMIT 1;");
         return $q->row();
     }
+
+    public function insert_sheep($sheepname,$lat,$lng,$health,$birthyear,$weight,$saueid){
+        $sql = "INSERT INTO sau (ID,navn,ownerID,birthYear,weight,health,color) VALUES (?,?,?,?,?,?,?)";
+        $this->db->query($sql, array($saueid,$sheepname, $_SESSION["userid"], $birthyear, $weight,$health,'1'));
+        $sqlpos = "INSERT INTO saupos (xpos,ypos,sauID,dato) VALUES (?,?,?,NOW());";
+        $this->db->query($sqlpos,array($lat,$lng,$saueid));
+    }
+
+
 
     public function delete_sheep($id){
         $this->db->query("DELETE FROM saupos WHERE sauID =".$id.";");

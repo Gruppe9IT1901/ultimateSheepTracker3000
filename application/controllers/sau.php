@@ -1,11 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
+/**
+ * Saueklasse
+ *
+ * @author Anders Kolstad
+*/
 class Sau extends CI_Controller {
 
-    /**
-     *
-     */
-
+/**
+ * @desc Sjekker om bruker er pålogget og laster sheep_model
+ * @return void
+*/
     public function __construct(){
         session_start();
         parent::__construct();
@@ -16,7 +20,9 @@ class Sau extends CI_Controller {
         $this->load->model('sheep_model');
     }
 
-
+/**
+ * @return void
+*/
     public function regSheep(){
         $data["sheep"] = $this->sheep_model->get_users_sheep();
         $this->load->view('regsau',$data);

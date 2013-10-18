@@ -10,10 +10,8 @@ var test;
 var regRect = false;
 var farmMap;
 
-
 /**
-Hovedkart
-
+ * Hovedkart
 */
 function initialize(sheep) {
     sheep_ = sheep_;
@@ -82,21 +80,25 @@ function initialize(sheep) {
             $(".sheep").hide();
             $("#menutitle").html(this.title);
             $('.deletesheep').remove();
+            $('.endre').remove();
             $('#sheepinfo').html('');
             $.ajax({
 				type: "POST",
 				dataType:'json',
+                                                // url:"http://localhost:8888/ultimateSheepTracker3000/index.php/ajax/getsheepinfo",
 				url: "http://m111b.studby.ntnu.no/index.php/ajax/getsheepinfo",
 				data: { id: this.id }
-				})	
+				})
 				.done(function( msg ) {
+                                                           $("#sheepinfo").append('<tr><td>ID: '+msg.ID+'</td></tr>');
 					$("#sheepinfo").append('<tr><td>Født: '+msg.birthYear+'</td></tr>');
 					$("#sheepinfo").append('<tr><td>Vekt: '+msg.weight+' kg</td></tr>');
 					$("#sheepinfo").append('<tr><td>Helse: '+msg.health+'</td></tr>');
 					console.log(msg);
 					test = msg;
-			});	
-            $("#menu").append("<a class='deletesheep' href=delete/" + this.id + ">Slett</a>");
+			});
+            $("#menu").append("<a class='deletesheep' href=delete/" + this.id + ">Slett</a>    ");
+            $("#menu").append("<a class='endre' href=endre/" + this.id + ">Endre</a>");
         });
 
     }
@@ -108,7 +110,9 @@ function removeAnimations() {
     };
 }
 
-//KART FOR REGISTRERING AV SAUER
+/**
+ * Kart for registrering av sauer
+*/
 function initRegSheep() {
     var mapOptions = {
         center: new google.maps.LatLng(63.368727, 10.323715),
@@ -151,6 +155,9 @@ function initRegSheep() {
 
 }
 
+/**
+ * Plasser sauemarkør
+*/
 function placeMarker(location, theMap) {
 	console.log(location);
     $("#lat").attr("value", location.lb);
@@ -167,14 +174,16 @@ function placeMarker(location, theMap) {
 }
 
 
-//Kart for registrering av gård
+/**
+ * Kart for registrering av gård
+*/
 function initBondeMap() {
     farmMap = new google.maps.Map(document.getElementById('map-canvas'), {
         mapTypeId: google.maps.MapTypeId.HYBRID
     });
     var defaultBounds = new google.maps.LatLngBounds(
-        new google.maps.LatLng(-33.8902, 151.1759),
-        new google.maps.LatLng(-33.8474, 151.2631));
+        new google.maps.LatLng(63.3902, 10.1759),
+        new google.maps.LatLng(63.3474, 10.2631));
     farmMap.fitBounds(defaultBounds);
 
     var input = /** @type {HTMLInputElement} */ (document.getElementById('target'));
@@ -199,13 +208,6 @@ function initBondeMap() {
                 scaledSize: new google.maps.Size(25, 25)
             };
 
-            // var marker = new google.maps.Marker({
-            //   map: map,
-            //   icon: image,
-            //   title: place.name,
-            //   position: place.geometry.location
-            // });
-
             markers.push(marker);
 
             bounds.extend(place.geometry.location);
@@ -220,31 +222,23 @@ function initBondeMap() {
     });
 
     google.maps.event.addListener(farmMap, 'click', function (event) {
-    if(regRect){
-    	regRect.setMap(null);
-    }
-	regRect = new google.maps.Rectangle({
-    strokeColor: '#00FF00',
-    strokeOpacity: 0.8,
-    strokeWeight: 2,
-    editable: true,
-    fillColor: '#00FF00',
-    fillOpacity: 0.35,
-    
-      bounds: new google.maps.LatLngBounds(
-      		
-            new google.maps.LatLng(event.latLng.lb-0.0005, event.latLng.mb),
-            new google.maps.LatLng(event.latLng.lb, event.latLng.mb+0.0005)
-        )
-  });
-  	
-  	regRect.setMap(farmMap);
-  	regRect.setDraggable(true);
+        if(regRect){
+            regRect.setMap(null);
+        }
+        regRect = new google.maps.Rectangle({
+            strokeColor: '#00FF00',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            editable: true,
+            fillColor: '#00FF00',
+            fillOpacity: 0.35,
+            bounds: new google.maps.LatLngBounds(
+                new google.maps.LatLng(event.latLng.lb-0.0005, event.latLng.mb),
+                new google.maps.LatLng(event.latLng.lb, event.latLng.mb+0.0005)
+            )
+        });
+        regRect.setMap(farmMap);
+        regRect.setDraggable(true);
     });
-
-
 }
-
 google.maps.event.addDomListener(window, 'load', initialize);
-
-

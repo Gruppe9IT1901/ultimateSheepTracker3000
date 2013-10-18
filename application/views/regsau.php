@@ -107,12 +107,20 @@
 
 var validator = new FormValidator('sheepreg',[{
   name:"lat",
-  display:"required",
+  display:"posisjon",
   rules:'required'
-}],
+},
+  {
+    name:'saueid',
+    display:'Saueid',
+    rules:'min_length[5]|max_length[5]'
+  }
+],
  function(errors, event) {
     if (errors.length > 0) {
-      $("#warning").html("<div class='alert alert-danger'>Du må gi sauen en plassering</div>");
+      for (var i = errors.length - 1; i >= 0; i--) {
+        $("#warning").append("<div class='alert alert-danger'>"+errors[i].message+"</div>");
+      };
     }
 });
 

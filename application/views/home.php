@@ -58,7 +58,7 @@
                <table class="table table-hover">
                <?php
                   foreach ($sheep->result() as $s) {
-                    echo "<tr class=\"sheep\" id='$s->ID'><td width=20px>$s->ID</td><td><span class='cursor'>". $s->navn . "</span></td></tr>";
+                    echo "<tr class=\"sheep\" id='$s->ID'><td width=20px>$s->ID</td><td class='sheepname'><span class='cursor'>". $s->navn . "</span></td></tr>";
                   }
                 ?>
                 </table>
@@ -69,6 +69,7 @@
 <script type="text/javascript">initialize(<?php echo json_encode($sheep->result()); ?>)</script>
         </div>
 <script>
+      var yo;
 	$('.sheep').click(function(){
 		removeAnimations();
 		var id = $(this).attr('id');
@@ -76,23 +77,28 @@
 			if(markers[i].id == id){
 				markers[i].setAnimation(google.maps.Animation.BOUNCE);
 				$(".sheep").hide();
-            $("#menutitle").html($(this).html());
+            yo = this;
+            $("#menutitle").html($(this).children('.sheepname').text());
             $('.deletesheep').remove();
+            $('.endre').remove();
             $('#sheepinfo').html('');
             $.ajax({
 				type: "POST",
 				dataType:'json',
+                        // url:"http://localhost:8888/ultimateSheepTracker3000/index.php/ajax/getsheepinfo",
 				url: "http://m111b.studby.ntnu.no/index.php/ajax/getsheepinfo",
 				data: { id: this.id }
 				})
 				.done(function( msg ) {
+                              $("#sheepinfo").append('<tr><td>ID: '+msg.ID+'</td></tr>');
 					$("#sheepinfo").append('<tr><td>Født: '+msg.birthYear+'</td></tr>');
 					$("#sheepinfo").append('<tr><td>Vekt: '+msg.weight+' kg</td></tr>');
 					$("#sheepinfo").append('<tr><td>Helse: '+msg.health+'</td></tr>');
 					console.log(msg);
 					test = msg;
 			});
-            $("#menu").append("<a class='deletesheep' href=delete/" + this.id + ">Slett</a>");
+            $("#menu").append("<a class='deletesheep' href=delete/" + this.id + ">Slett</a>  ");
+            $("#menu").append("<a class='endre' href=endre/" + this.id + ">Endre</a>");
 			}
 		}
 	});

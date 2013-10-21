@@ -43,11 +43,11 @@
 </nav>
     <div class="row" id="sheepreg">
         <div class="col-md-9" id="hero">
-  <form role="form" name="sheepreg" action="editsheep" method="post">
+  <form role="form" name="sheepreg" action="<?php echo base_url(); ?>index.php/sau/updateSheep" method="post">
     <div id="fields">
     <div class="form-group">
     <label for="sauenavn">ID</label>
-   <input type='text' class='form-control input-md' name='saueid' id='saueid' value=<?php echo $editsheep->ID; ?> placeholder='00000' required>
+   <input type='text' class='form-control input-md' name='saueid' id='saueid' value=<?php echo $editsheep->ID; ?> placeholder='00000' required readonly>
   </div>
   <div class="form-group">
     <label for="sauenavn">Navn</label>
@@ -56,7 +56,7 @@
 
   <div class="form-group">
     <label for="sauenavn">Fødselsår</label>
-   <input type='text' class='form-control input-md' name='birthYear' id='birthYear' value="<?php echo $editsheep->birthYear; ?>" placeholder='' required>
+   <input type='text' class='form-control input-md' name='birthYear' id='birthYear' value="<?php echo $editsheep->birthYear; ?>" placeholder='' required readonly>
   </div>
 
   <div class="form-group">
@@ -67,7 +67,6 @@
   <div class="form-group">
     <label for="sauenavn">Helse</label>
    <input type='text' class='form-control input-md' name='health' id='health' value="<?php echo $editsheep->health; ?>" placeholder='' required>
-  <button type="submit" class="btn btn-default">Endre</button>
   </div>
 
   </div>
@@ -75,6 +74,7 @@
 <div id="warning"></div>
     </div>
 
+  <button type="submit" class="btn btn-default">Endre</button>
 </form>
         </div>
 

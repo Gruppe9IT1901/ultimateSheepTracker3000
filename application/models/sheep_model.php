@@ -23,7 +23,10 @@ class Sheep_model extends CI_Model
         $this->db->query($sqlpos,array($lat,$lng,$saueid));
     }
 
-
+    public function edit_sheep($sheepid,$sheepname,$health,$birthyear,$weight){
+        $sql = "UPDATE sau SET weight = '$weight', health = '$health', navn = '$sheepname' WHERE ID = '$sheepid';";
+        $this->db->query($sql);
+    }
 
     public function delete_sheep($id){
         $this->db->query("DELETE FROM saupos WHERE sauID =".$id.";");

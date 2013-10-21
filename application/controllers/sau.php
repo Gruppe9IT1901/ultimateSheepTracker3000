@@ -34,6 +34,18 @@ class Sau extends CI_Controller {
         $this->load->view('editsheep',$data);
     }
 
+    public function updateSheep(){
+        $sheepid = $this->input->post('saueid');
+        $sheepname = $this->input->post("sauenavn");
+        $lat = $this->input->post("lat");
+        $lng = $this->input->post("lng");
+        $health = $this->input->post('health');
+        $birthyear = $this->input->post('birthYear');
+        $weight = $this->input->post('weight');
+        $this->sheep_model->edit_sheep($sheepid,$sheepname,$health,$birthyear,$weight);
+        redirect('admin');
+    }
+
     public function saveSheep(){
             $sheepid = $this->input->post('saueid');
             $sheepname = $this->input->post("sauenavn");

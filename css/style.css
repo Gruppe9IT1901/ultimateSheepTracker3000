@@ -46,10 +46,6 @@ body{
     margin: 0;
     width: 100%;
     height:550px;
-
-}
-
-#maxmap{
 }
 
 .navbar{
@@ -57,10 +53,14 @@ body{
     box-shadow: 0;
 }
 
-#warning{
+#sheepreg input{
+    width:200px;
+}
 
+#sheepreg #map-canvas{
+    float: left;
 }
 
 .cursor{
-	cursor: pointer;
+    cursor: pointer;
 }

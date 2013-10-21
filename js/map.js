@@ -50,7 +50,7 @@ function initialize(sheep) {
         $('.deletesheep').remove();
         $("#menutitle").html("Saueliste");
         $('#sheepinfo').html('');
-
+        $('.endre').html('');
     });
 
     google.maps.event.addListener(rectangle, 'click', function () {
@@ -59,7 +59,7 @@ function initialize(sheep) {
         $('.deletesheep').remove();
         $("#menutitle").html("Saueliste");
         $('#sheepinfo').html('');
-
+        $('.endre').html('');
     });
 
     for (var i = 0; i < sheep.length; i++) {
@@ -110,6 +110,10 @@ function removeAnimations() {
     };
 }
 
+function clear(){
+
+}
+
 /**
  * Kart for registrering av sauer
 */
@@ -152,7 +156,6 @@ function initRegSheep() {
         $("#warning").append("<div class='alert alert-danger'>Du kan ikke plassere sauen her!</div>");
     });
 
-
 }
 
 /**
@@ -172,7 +175,6 @@ function placeMarker(location, theMap) {
         });
     }
 }
-
 
 /**
  * Kart for registrering av gård

@@ -13,9 +13,9 @@ class Sau extends CI_Controller {
     public function __construct(){
         session_start();
         parent::__construct();
-		$this->load->helper('url');
+        $this->load->helper('url');
         if (!isset($_SESSION['username'])) {
-            redirect('admin');
+            redirect('admin'); //redirect til login hvis ikke bruker er logget inn
         }
         $this->load->model('sheep_model');
     }

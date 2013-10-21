@@ -42,10 +42,10 @@
 
 </nav>
 </div>
-    <div class="row">
-
+    <div class="row" id="sheepreg">
         <div class="col-md-9" id="hero">
-              <form role="form" name="sheepreg" action="savesau" method="post">
+  <form role="form" name="sheepreg" action="savesau" method="post">
+
     <div class="form-group">
     <label for="sauenavn">ID</label>
    <input type='text' class='form-control input-md' name='saueid' id='saueid' placeholder='00000' required>
@@ -69,7 +69,6 @@
     <label for="sauenavn">Helse</label>
    <input type='text' class='form-control input-md' name='health' id='health' placeholder='' required>
   </div>
-
 
   <div class="form-group">
   <label for="lat">Plassering</label>

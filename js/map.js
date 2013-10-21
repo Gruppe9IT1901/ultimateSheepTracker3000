@@ -194,7 +194,6 @@ function initBondeMap() {
 
     google.maps.event.addListener(searchBox, 'places_changed', function () {
         var places = searchBox.getPlaces();
-
         for (var i = 0, marker; marker = markers[i]; i++) {
             marker.setMap(null);
         }
@@ -216,6 +215,7 @@ function initBondeMap() {
         }
 
         farmMap.fitBounds(bounds);
+        farmMap.setZoom(15);
     });
 
     google.maps.event.addListener(farmMap, 'bounds_changed', function () {

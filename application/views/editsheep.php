@@ -25,7 +25,7 @@
 <ul class="nav navbar-nav">
       <li id="navbtn"><a href="<?php echo base_url(); ?>index.php/welcome">Kart</a></li>
       <li class="active" id="navbtn"><a href="<?php echo base_url(); ?>sau/regsau">Registrer sau</a></li>
-	   <li class="dropdown">
+       <li class="dropdown">
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="#">Endre bruker</a></li>
@@ -43,47 +43,38 @@
 </nav>
     <div class="row" id="sheepreg">
         <div class="col-md-9" id="hero">
-  <form role="form" name="sheepreg" action="savesau" method="post">
-
-  <div id="fields">
+  <form role="form" name="sheepreg" action="editsheep" method="post">
+    <div id="fields">
     <div class="form-group">
     <label for="sauenavn">ID</label>
-   <input type='text' class='form-control input-md' name='saueid' id='saueid' placeholder='00000' required>
+   <input type='text' class='form-control input-md' name='saueid' id='saueid' value=<?php echo $editsheep->ID; ?> placeholder='00000' required>
   </div>
   <div class="form-group">
     <label for="sauenavn">Navn</label>
-   <input type='text' class='form-control input-md' name='sauenavn' id='sauenavn' placeholder='' required>
+   <input type='text' class='form-control input-md' name='sauenavn' id='sauenavn' value="<?php echo $editsheep->navn; ?>" placeholder='' required>
   </div>
 
   <div class="form-group">
     <label for="sauenavn">Fødselsår</label>
-   <input type='text' class='form-control input-md' name='birthYear' id='birthYear' placeholder='' required>
+   <input type='text' class='form-control input-md' name='birthYear' id='birthYear' value="<?php echo $editsheep->birthYear; ?>" placeholder='' required>
   </div>
 
   <div class="form-group">
     <label for="sauenavn">Vekt</label>
-   <input type='text' class='form-control input-md' name='weight' id='weight' placeholder='' required>
+   <input type='text' class='form-control input-md' name='weight' id='weight' value="<?php echo $editsheep->weight; ?>" placeholder='' required>
   </div>
 
   <div class="form-group">
     <label for="sauenavn">Helse</label>
-   <input type='text' class='form-control input-md' name='health' id='health' placeholder='' required>
+   <input type='text' class='form-control input-md' name='health' id='health' value="<?php echo $editsheep->health; ?>" placeholder='' required>
+  <button type="submit" class="btn btn-default">Endre</button>
   </div>
 
   </div>
-  <div id="map"> <div class="form-group">
-  <label for="lat">Plassering</label>
+  <div id="map"> <img src="<?php echo base_url(); ?>/img/icon-sheep.png">
 <div id="warning"></div>
-    <div id="map-canvas" style="height:400px;"></div>
-    <input id="lat" type="hidden" name="lat" value="">
-    <input id="lng" type="hidden" name="lng" value="">
-  </div></div>
+    </div>
 
-    <!--  -->
-
-
-
-  <button type="submit" class="btn btn-default">Submit</button>
 </form>
         </div>
 

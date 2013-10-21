@@ -49,12 +49,16 @@
     <input id="lng" type="hidden" name="lng" value="">
   </div>
 
-  <button type="submit" class="btn btn-default">Submit</button>
+  <button type="submit" class="btn btn-default">Registrer</button>
         </div>
 
         <div class="col-md-3" id="menu">
                <h3 id="test">Registrer</h3>
                <div class="form-group">
+               <label for="tlf">Fornavn</label>
+                 <input type="text" class="form-control input-md" name="fname" id="fname" required>
+                 <label for="tlf">Etternavn</label>
+                 <input type="text" class="form-control input-md" name="lname" id="lname" required>
                  <label for="epost">Epost</label>
                  <input type="text" class="form-control input-md" name="epost" id="epost" required>
                  <label for="passord">Passord</label>
@@ -62,14 +66,32 @@
                  <label for="passord2">Passord</label>
                  <input type="password" class="form-control input-md" name="passord2" id="passord2" required>
                  <label for="tlf">Telefon</label>
-                 <input type="text" class="form-control input-md" name="tlf" id="tlf">
-
+                 <input type="text" class="form-control input-md" name="tlf" id="tlf" required>
+                 <h3>Kontaktperson</h3>
+                 <label for="tlf">Fornavn</label>
+                 <input type="text" class="form-control input-md" name="second_fname" id="second_fname" required>
+                 <label for="tlf">Etternavn</label>
+                 <input type="text" class="form-control input-md" name="second_lname" id="second_lname" required>
+                 <label for="tlf">Telefon</label>
+                 <input type="text" class="form-control input-md" name="second_tlf" id="second_tlf" required>
+                 <label for="tlf">Epost</label>
+                 <input type="text" class="form-control input-md" name="second_epost" id="second_epost" required>
                </div>
         </div>
 </form>
     </div>
 <script type="text/javascript">
   initBondeMap();
+  $(document).ready(function() {
+
+  //no submit on enter
+  $(window).keydown(function(event){
+    if(event.keyCode == 13) {
+      event.preventDefault();
+      return false;
+    }
+  });
+});
 </script>
   </body>
 </html>

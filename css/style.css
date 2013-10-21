@@ -25,8 +25,8 @@ body{
 
 #menu{
     background: white;
-    height: 550px;
-    background: white;
+    height: 605px;
+    overflow: scroll;
     /*background: #E74C3C*/
 }
 
@@ -54,13 +54,23 @@ body{
 }
 
 #sheepreg input{
-    width:200px;
+    width:280px;
 }
 
-#sheepreg #map-canvas{
+#sheepreg{
+    width: 100%
+}
+
+#fields{
     float: left;
+    width: 300px;
+}
+#map{
+    float: left;
+    width:600px;
 }
 
 .cursor{
     cursor: pointer;
 }
+

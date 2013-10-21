@@ -29,8 +29,9 @@ class Sau extends CI_Controller {
     }
 
     public function editSheep(){
-        $data["res"] = $this->sheep_model->get_sheep_by_id($this->uri->segment(2));
-        print_r($data["res"]);
+        $data["sheep"] = $this->sheep_model->get_users_sheep();
+        $data["editsheep"] = $this->sheep_model->get_sheep_by_id($this->uri->segment(2));
+        $this->load->view('editsheep',$data);
     }
 
     public function saveSheep(){
